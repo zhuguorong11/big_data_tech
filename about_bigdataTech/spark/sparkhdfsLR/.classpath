@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="F:/eclispe_pack/spark-1.6.3-bin-hadoop2.6/lib/datanucleus-api-jdo-3.2.6.jar"/>
+	<classpathentry kind="lib" path="F:/eclispe_pack/spark-1.6.3-bin-hadoop2.6/lib/datanucleus-core-3.2.10.jar"/>
+	<classpathentry kind="lib" path="F:/eclispe_pack/spark-1.6.3-bin-hadoop2.6/lib/datanucleus-rdbms-3.2.9.jar"/>
+	<classpathentry kind="lib" path="F:/eclispe_pack/spark-1.6.3-bin-hadoop2.6/lib/spark-1.6.3-yarn-shuffle.jar"/>
+	<classpathentry kind="lib" path="F:/eclispe_pack/spark-1.6.3-bin-hadoop2.6/lib/spark-assembly-1.6.3-hadoop2.6.0.jar"/>
+	<classpathentry kind="lib" path="F:/eclispe_pack/spark-1.6.3-bin-hadoop2.6/lib/spark-examples-1.6.3-hadoop2.6.0.jar"/>
+	<classpathentry kind="lib" path="F:/eclispe_pack/spark-2.0.2-bin-hadoop2.7/jars/spark-sql_2.11-2.0.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

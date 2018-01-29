@@ -1,0 +1,22 @@
+package sparkdemo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.JavaSparkContext;
+
+
+public class Piestimation {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		SparkConf conf = new SparkConf().setAppName("piestimation");
+		JavaSparkContext sc = new JavaSparkContext(conf);
+		
+		List<Integer> list = new ArrayList<>(100);
+		for (int i = 0; i < 100; ++i)
+			list.add(i)list;
+	}
+
+}

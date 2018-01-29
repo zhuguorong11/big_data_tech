@@ -1,0 +1,12 @@
+package sparkdemo;
+
+
+//using Spark's status APIs from Java.
+public final class JavaStatusTrackerDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
