@@ -1,0 +1,78 @@
+package sparkdemo;
+
+import java.io.Serializable;
+import java.util.Random;
+import java.util.regex.Pattern;
+
+import org.antlr.grammar.v3.ANTLRv3Parser.range_return;
+import org.apache.spark.api.java.function.Function;
+import org.apache.spark.api.java.function.Function2;
+import org.netlib.util.doubleW;
+
+
+
+/**
+ * Logistic regression based classification.
+ *
+ * This is an example implementation for learning how to use Spark. For more conventional use,
+ * please refer to org.apache.spark.ml.classification.LogisticRegression.
+ */
+public final class JavaHdfsLR {
+	
+	private static final int D = 10;//维度
+	private static final Random rand = new Random(42);//用来后面随机赋值权重
+	
+	//警告函数
+	static void showWarning() {
+	    String warning = "WARN: This is a naive implementation of Logistic Regression " +
+	            "and is given as an example!\n" +
+	            "Please use org.apache.spark.ml.classification.LogisticRegression " +
+	            "for more conventional use.";
+	    System.err.println(warning);
+	  }
+	
+	//定义点，而且要进行序列化，保证读取正确
+	static class DataPoint implements Serializable{
+		public DataPoint(double[] x,double y) {
+			this.x = x;
+			this.y = y;
+		}
+		double[] x;
+		double y;
+	}
+	
+	//对读取到的每一行进行点的读取解析赋值
+	static class ParsePoint implements Function<String, DataPoint>
+	{
+		private static final Pattern SPACE = Pattern.compile(" ");
+		
+		public DataPoint call(String line) throws Exception {
+			String[] tok = SPACE.split(line);
+			double y = Double.parseDouble(tok[0]);
+			double[] x = new double[D];
+			for(int i = 0; i<D;++i)
+			{
+					x[i] = Double.parseDouble(tok[i+1]);
+			}
+			return new DataPoint(x, y);
+		}
+	}
+	
+	//
+	static class VectorSum implements Function2<double[],doubleW[], doubleW[]>
+	{
+
+		@Override
+		public doubleW[] call(double[] arg0, doubleW[] arg1) throws Exception {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

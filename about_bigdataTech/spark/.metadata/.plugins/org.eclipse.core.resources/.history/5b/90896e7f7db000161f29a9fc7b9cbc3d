@@ -1,0 +1,11 @@
+package sparkdemo;
+
+public class DatabaseOper {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String url =
+				  "jdbc:mysql://ubuntumaster:3306/zgr?user=root;password=118925";
+	}
+
+}

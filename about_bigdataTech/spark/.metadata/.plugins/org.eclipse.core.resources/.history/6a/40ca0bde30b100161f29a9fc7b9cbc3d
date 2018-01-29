@@ -1,0 +1,21 @@
+package sparkdemo;
+
+import org.apache.spark.api.java.function.Function;
+
+//using Spark's status APIs from Java.
+public final class JavaStatusTrackerDemo {
+	
+	public static final class IdentityWithDelay<T> implements Function<T, T>
+	{
+		public T call(T arg0) throws Exception {
+			Thread.sleep(1000*2);//sleep 2s
+			return x;
+		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.mylyn.java.junit.launchconfig">
+<booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="hdfs://10.149.252.106:9000/input/NOTICE.txt&#13;&#10;hdfs://10.149.252.106:9000/output/wordcount/"/>
+</launchConfiguration>

@@ -1,0 +1,78 @@
+package zgrHbase;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.hbase.Cell;
+import org.apache.hadoop.hbase.CellUtil;
+import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.HColumnDescriptor;
+import org.apache.hadoop.hbase.HTableDescriptor;
+import org.apache.hadoop.hbase.KeyValue;
+import org.apache.hadoop.hbase.MasterNotRunningException;
+import org.apache.hadoop.hbase.TableName;
+import org.apache.hadoop.hbase.ZooKeeperConnectionException;
+import org.apache.hadoop.hbase.client.Admin;
+import org.apache.hadoop.hbase.client.Connection;
+import org.apache.hadoop.hbase.client.ConnectionFactory;
+import org.apache.hadoop.hbase.client.Delete;
+import org.apache.hadoop.hbase.client.Get;
+import org.apache.hadoop.hbase.client.HBaseAdmin;
+import org.apache.hadoop.hbase.client.HTable;
+import org.apache.hadoop.hbase.client.HTablePool;
+import org.apache.hadoop.hbase.client.Put;
+import org.apache.hadoop.hbase.client.Result;
+import org.apache.hadoop.hbase.client.ResultScanner;
+import org.apache.hadoop.hbase.client.Scan;
+import org.apache.hadoop.hbase.client.Table;
+import org.apache.hadoop.hbase.filter.Filter;
+import org.apache.hadoop.hbase.filter.PageFilter;
+import org.apache.hadoop.hbase.util.Bytes;
+
+import com.sun.org.apache.commons.logging.Log;
+import com.sun.org.apache.commons.logging.LogFactory;
+
+public class HbaseTest {
+	static Configuration cfg = HBaseConfiguration.create();
+//	static {
+//
+//		cfg.set("hbase.zookeeper.quorum", "192.168.1.95");
+//		cfg.set("hbase.zookeeper.property.clientPort", "2181");
+//	}
+
+	public static void createTable(String tableName) {
+		System.out.println("************start create table**********");
+		try {
+			HBaseAdmin hBaseAdmin = new HBaseAdmin(cfg);
+			if (hBaseAdmin.tableExists(tableName)) {// 如果存在要创建的表，那么先删除，再创建
+				hBaseAdmin.disableTable(tableName);
+				hBaseAdmin.deleteTable(tableName);
+				System.out.println(tableName + " is exist");
+			}
+			HTableDescriptor tableDescriptor = new HTableDescriptor(tableName);// 代表表的schema
+			tableDescriptor.addFamily(new HColumnDescriptor("name")); // 增加列簇
+			tableDescriptor.addFamily(new HColumnDescriptor("age"));
+			tableDescriptor.addFamily(new HColumnDescriptor("gender"));
+			hBaseAdmin.createTable(tableDescriptor);
+		} catch (MasterNotRunningException e) {
+			e.printStackTrace();
+		} catch (ZooKeeperConnectionException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("*****end create table*************");
+	}
+
+	public static void main(String[] args) {
+		try {
+			String tablename = "wishTest";
+			HbaseTest.createTable(tablename);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
